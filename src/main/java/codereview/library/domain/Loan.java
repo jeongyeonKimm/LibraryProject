@@ -10,21 +10,29 @@ import java.time.LocalDateTime;
 public class Loan {
 
     @Id @GeneratedValue
-    @Column(name = "loan_id")
+    @Column(name = "loan_id", nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private LoanStatus loanStatus;
 
+    @Column(nullable = false)
     private LocalDateTime loanedDate;
+
+    @Column(nullable = false)
     private LocalDateTime returnDate;
 
+    public void setMember(Member member) {
+        this.member =  member;
+        member.getLoanList().add(this);
+    }
 }

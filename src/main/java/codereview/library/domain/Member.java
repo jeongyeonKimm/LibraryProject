@@ -12,12 +12,19 @@ public class Member {
 
     @Id
     @GeneratedValue
-    @Column(name = "member_id")
+    @Column(name = "member_id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String birth;
+
+    @Column(nullable = false)
     private String phone;
+
+    @Column(nullable = false)
     private String email;
 
     @Embedded

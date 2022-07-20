@@ -11,14 +11,15 @@ import java.util.List;
 public class Book {
 
     @Id @GeneratedValue
-    @Column(name = "book_id")
+    @Column(name = "book_id", nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "isbn")
+    @JoinColumn(name = "isbn", nullable = false)
     private BookInfo bookInfo;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private BookStatus bookStatus;
 
     @OneToMany(mappedBy = "book")

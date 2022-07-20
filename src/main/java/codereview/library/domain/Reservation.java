@@ -10,16 +10,22 @@ import java.time.LocalDateTime;
 public class Reservation {
 
     @Id @GeneratedValue
-    @Column(name = "reservation_id")
+    @Column(name = "reservation_id", nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    @Column(nullable = false)
     private LocalDateTime reservationDate;
+
+    public void setMember(Member member) {
+        this.member = member;
+        member.getReservationList().add(this);
+    }
 }

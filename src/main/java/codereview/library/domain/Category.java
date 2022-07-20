@@ -11,10 +11,10 @@ import java.util.List;
 public class Category {
 
     @Id @GeneratedValue
-    @Column(name = "category_id")
-
+    @Column(name = "category_id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "category")
