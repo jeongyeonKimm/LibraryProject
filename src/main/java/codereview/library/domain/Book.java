@@ -3,8 +3,6 @@ package codereview.library.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -21,11 +19,5 @@ public class Book {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private BookStatus bookStatus;
-
-    @OneToMany(mappedBy = "book")
-    private List<Reservation> reservationList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "book")
-    private List<Loan> loanList = new ArrayList<>();
 
 }

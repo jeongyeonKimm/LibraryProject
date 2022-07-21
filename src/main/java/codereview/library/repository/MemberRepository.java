@@ -1,6 +1,7 @@
 package codereview.library.repository;
 
 import codereview.library.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
     @PersistenceContext
@@ -31,4 +33,17 @@ public class MemberRepository {
                 .setParameter("name", name)
                 .getResultList();
     }
+
+    public void update(Member member) {
+        Member findMember = em.find(Member.class, member.getId());
+
+        findMember.changePhone(member.getPhone());
+        findMember.changeEmail(member.getEmail());
+        findMember.changeAddress(member.getAddress());
+    }
+
+    public void delete(Member member) {
+        em.remove(member);
+    }
+
 }

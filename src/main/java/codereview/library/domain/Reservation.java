@@ -24,8 +24,4 @@ public class Reservation {
     @Column(nullable = false)
     private LocalDateTime reservationDate;
 
-    public void setMember(Member member) {
-        this.member = member;
-        member.getReservationList().add(this);
-    }
 }

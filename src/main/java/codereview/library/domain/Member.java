@@ -3,8 +3,6 @@ package codereview.library.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -30,10 +28,24 @@ public class Member {
     @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "member")
-    private List<Reservation> reservationList = new ArrayList<>();
+    public Member(String name, String birth, String phone, String email, Address address) {
+        this.name = name;
+        this.birth = birth;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+    }
 
-    @OneToMany(mappedBy = "member")
-    private List<Loan> loanList = new ArrayList<>();
+    public void changePhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void changeEmail(String email) {
+        this.email = email;
+    }
+
+    public void changeAddress(Address address) {
+        this.address = address;
+    }
 
 }

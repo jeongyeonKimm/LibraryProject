@@ -31,8 +31,4 @@ public class Loan {
     @Column(nullable = false)
     private LocalDateTime returnDate;
 
-    public void setMember(Member member) {
-        this.member =  member;
-        member.getLoanList().add(this);
-    }
 }
