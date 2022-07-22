@@ -1,5 +1,6 @@
 package codereview.library.service;
 
+import codereview.library.domain.Address;
 import codereview.library.domain.Member;
 import codereview.library.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -42,8 +43,12 @@ public class MemberService {
     /**
      * 회원 수정
      */
-    public void updateMember(Member member) {
-        memberRepository.update(member);
+    public void updateMember(Long id, String phone, String email, Address address) {
+        Member findMember = memberRepository.findOne(id);
+
+        findMember.changePhone(phone);
+        findMember.changeEmail(email);
+        findMember.changeAddress(address);
     }
 
     /**
@@ -53,6 +58,9 @@ public class MemberService {
         memberRepository.delete(member);
     }
 
+    /**
+     * 중복 회원 검증
+     */
     private void validateDuplicateMember(Member member) {
 
         List<Member> findMembers = memberRepository.findByName(member.getName());

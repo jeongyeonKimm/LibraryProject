@@ -24,4 +24,12 @@ public class Reservation {
     @Column(nullable = false)
     private LocalDateTime reservationDate;
 
+    protected Reservation(){
+    }
+
+    public Reservation(Member member, Book book, LocalDateTime reservationDate) {
+        this.member = member;
+        this.book = book;
+        this.reservationDate = reservationDate;
+    }
 }

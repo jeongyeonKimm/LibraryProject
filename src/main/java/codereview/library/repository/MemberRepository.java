@@ -1,5 +1,6 @@
 package codereview.library.repository;
 
+import codereview.library.domain.Address;
 import codereview.library.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -32,14 +33,6 @@ public class MemberRepository {
         return em.createQuery("select m from Member m where m.name = :name", Member.class)
                 .setParameter("name", name)
                 .getResultList();
-    }
-
-    public void update(Member member) {
-        Member findMember = em.find(Member.class, member.getId());
-
-        findMember.changePhone(member.getPhone());
-        findMember.changeEmail(member.getEmail());
-        findMember.changeAddress(member.getAddress());
     }
 
     public void delete(Member member) {
