@@ -31,4 +31,21 @@ public class Loan {
     @Column(nullable = false)
     private LocalDateTime returnDate;
 
+    protected Loan() {
+    }
+
+    public Loan(Member member, Book book, LocalDateTime loanedDate, LocalDateTime returnDate) {
+        this.member = member;
+        this.book = book;
+        this.loanedDate = loanedDate;
+        this.returnDate = returnDate;
+    }
+
+    public void changeToLoan() {
+        this.loanStatus = LoanStatus.LOAN;
+    }
+
+    public void changeToReturn() {
+        this.loanStatus = LoanStatus.RETURN;
+    }
 }

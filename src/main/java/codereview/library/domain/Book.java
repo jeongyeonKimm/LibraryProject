@@ -20,4 +20,11 @@ public class Book {
     @Column(nullable = false)
     private BookStatus bookStatus;
 
+    protected Book() {
+    }
+
+    public Book(BookInfo bookInfo, BookStatus bookStatus) {
+        this.bookInfo = bookInfo;
+        this.bookStatus = bookStatus;
+    }
 }

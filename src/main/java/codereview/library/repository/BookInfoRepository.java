@@ -54,7 +54,7 @@ public class BookInfoRepository {
                 .getResultList();
     }
 
-    public void delete(String isbn) {
-        em.remove(isbn);
+    public void delete(BookInfo bookInfo) {
+        em.remove(bookInfo);
     }
 }

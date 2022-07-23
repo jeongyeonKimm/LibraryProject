@@ -105,23 +105,16 @@ class MemberServiceTest {
     public void 회원수정() throws Exception {
 
         //given
-        Member member1 = new Member("member1", "1999-10-06", "123-123",
+        Member member = new Member("member1", "1999-10-06", "123-123",
                 "member1@gmail.com", new Address("12345", "Seoul", "Gwangjin"));
-        memberService.join(member1);
+        Long memberId = memberService.join(member);
 
         //when
-        memberService.updateMember(1L, "1234-1234", "member1@naver.com",
+        Member updatedMember = memberService.updateMember(memberId, "1234-1234", "member1@naver.com",
                 new Address("12345", "Seoul", "Gwangjin")); //phone, email 수정
 
         //then
-        List<Member> findMember = memberService.findMemberByName(member1);
-        for (Member member : findMember) {
-            System.out.println("member.getId() = " + member.getId());
-            System.out.println("member.getName() = " + member.getName());
-            System.out.println("member.getPhone() = " + member.getPhone());
-            System.out.println("member.getEmail() = " + member.getEmail());
-            System.out.println("member.getAddress() = " + member.getAddress());
-        }
+        assertEquals(updatedMember, memberRepository.findOne(memberId));
     }
 
     @Test

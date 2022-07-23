@@ -43,12 +43,14 @@ public class MemberService {
     /**
      * 회원 수정
      */
-    public void updateMember(Long id, String phone, String email, Address address) {
+    public Member updateMember(Long id, String phone, String email, Address address) {
         Member findMember = memberRepository.findOne(id);
 
         findMember.changePhone(phone);
         findMember.changeEmail(email);
         findMember.changeAddress(address);
+
+        return findMember;
     }
 
     /**

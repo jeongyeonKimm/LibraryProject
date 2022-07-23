@@ -29,4 +29,15 @@ public class BookInfo {
     @Column(nullable = false)
     private LocalDateTime createdDate;
 
+    protected BookInfo() {
+    }
+
+    public BookInfo(String isbn, Category category, String author, String name, String publisher, LocalDateTime createdDate) {
+        this.isbn = isbn;
+        this.category = category;
+        this.author = author;
+        this.name = name;
+        this.publisher = publisher;
+        this.createdDate = createdDate;
+    }
 }

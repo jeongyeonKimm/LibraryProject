@@ -16,8 +16,9 @@ public class LoanService {
     /**
      * 도서 대출
      */
-    public void borrowBook(Loan loan) {
+    public Long borrowBook(Loan loan) {
         loanRepository.borrow(loan);
+        return loan.getId();
     }
 
     /**

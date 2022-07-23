@@ -1,6 +1,7 @@
 package codereview.library.service;
 
 import codereview.library.domain.Book;
+import codereview.library.domain.BookInfo;
 import codereview.library.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,10 @@ public class BookService {
     /**
      * 도서 등록
      */
-    public void register(Book book) {
+    public Long register(Book book) {
+
         bookRepository.save(book);
+        return book.getId();
     }
 
     /**
@@ -49,5 +52,5 @@ public class BookService {
     public void deleteBook(Book book) {
         bookRepository.delete(book);
     }
-    
+
 }

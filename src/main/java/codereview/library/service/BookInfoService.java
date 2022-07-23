@@ -1,6 +1,8 @@
 package codereview.library.service;
 
 import codereview.library.domain.BookInfo;
+import codereview.library.domain.Category;
+import codereview.library.domain.Member;
 import codereview.library.repository.BookInfoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,8 +20,11 @@ public class BookInfoService {
     /**
      * 도서 정보 등록
      */
-    public void register(BookInfo bookInfo) {
+    public String register(BookInfo bookInfo) {
+
+        validateDuplicateBookInfo(bookInfo);
         bookInfoRepository.save(bookInfo);
+        return bookInfo.getIsbn();
     }
 
     /**
@@ -39,8 +44,8 @@ public class BookInfoService {
     /**
      * 카테고리로 도서 정보 조회
      */
-    public List<BookInfo> findBookInfoByCategory(BookInfo bookInfo) {
-        return bookInfoRepository.findByCategory(bookInfo.getCategory());
+    public List<BookInfo> findBookInfoByCategory(Category category) {
+        return bookInfoRepository.findByCategory(category);
     }
 
     /**
@@ -68,7 +73,18 @@ public class BookInfoService {
      * 도서 정보 삭제
      */
     public void deleteBookInfo(BookInfo bookInfo) {
-        bookInfoRepository.delete(bookInfo.getIsbn());
+        bookInfoRepository.delete(bookInfo);
     }
 
+    /**
+     * 중복 도서 정보 검증
+     */
+    private void validateDuplicateBookInfo(BookInfo bookInfo) {
+
+        List<BookInfo> findBookInfos = bookInfoRepository.findByName(bookInfo.getName());
+        if (!findBookInfos.isEmpty()) {
+            throw new IllegalStateException(("이미 존재하는 도서 정보 입니다."));
+        }
+
+    }
 }

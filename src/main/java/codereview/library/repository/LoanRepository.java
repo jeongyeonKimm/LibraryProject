@@ -15,10 +15,15 @@ public class LoanRepository {
     private EntityManager em;
 
     public void borrow(Loan loan) {
+        loan.changeToLoan();
         em.persist(loan);
     }
 
     public void returnBook(Loan loan) {
-        em.remove(loan);
+        loan.changeToReturn();
+    }
+
+    public Loan findOne(Long id) {
+        return em.find(Loan.class, id);
     }
 }

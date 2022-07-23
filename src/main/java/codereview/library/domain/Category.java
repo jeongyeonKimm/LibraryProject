@@ -15,6 +15,13 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
+    protected Category(){
+    }
+
+    public Category(String name) {
+        this.name = name;
+    }
+
     public void changeName(String name) {
         this.name = name;
     }

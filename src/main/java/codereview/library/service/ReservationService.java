@@ -19,22 +19,24 @@ public class ReservationService {
     /**
      * 예약 등록
      */
-    public void reserve(Reservation reservation) {
+    public Long reserve(Reservation reservation) {
+
         reservationRepository.save(reservation);
+        return reservation.getId();
     }
 
     /**
      * 전체 예약 조회
      */
-    public void findAllReservs() {
-        reservationRepository.findAll();
+    public List<Reservation> findAllReservs() {
+        return reservationRepository.findAll();
     }
 
     /**
      * 전화번호로 예약 조회
      */
-    public void findReservByPhone(Reservation reservation) {
-        reservationRepository.findByPhone(reservation.getMember());
+    public List<Reservation> findReservByPhone(Reservation reservation) {
+        return reservationRepository.findByPhone(reservation.getMember());
     }
 
     /**
