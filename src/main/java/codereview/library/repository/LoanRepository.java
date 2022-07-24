@@ -1,6 +1,7 @@
 package codereview.library.repository;
 
 import codereview.library.domain.Loan;
+import codereview.library.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -22,4 +23,5 @@ public class LoanRepository {
     public Loan findOne(Long id) {
         return em.find(Loan.class, id);
     }
+
 }

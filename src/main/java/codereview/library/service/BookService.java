@@ -55,4 +55,7 @@ public class BookService {
         bookRepository.delete(book);
     }
 
+    public Book findOne(Long bookId) {
+        return bookRepository.findOne(bookId);
+    }
 }

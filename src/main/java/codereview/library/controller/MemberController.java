@@ -18,7 +18,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping(value = "/members/new")
+    @GetMapping("/members/new")
     public String createForm(Model model) {
         model.addAttribute("memberForm", new MemberForm());
         return "members/createMemberForm";
@@ -63,9 +63,9 @@ public class MemberController {
     }
 
     @PostMapping("/members/{memberId}/update")
-    public String updateMember(@ModelAttribute("form") MemberForm form) {
+    public String updateMember(@PathVariable("memberId") Long memberId, @ModelAttribute("form") MemberForm form) {
 
-        memberService.updateMember(form.getId(), form.getPhone(), form.getEmail(), form.getZipcode(), form.getMain_address(), form.getSub_address());
+        memberService.updateMember(memberId, form.getPhone(), form.getEmail(), form.getZipcode(), form.getMain_address(), form.getSub_address());
         return "redirect:/members";
     }
 

@@ -60,7 +60,7 @@ class BookInfoServiceTest {
         String bookInfoIsbn2= bookInfoService.register(bookInfo2);
 
         //when
-        List<BookInfo> findBookInfos = bookInfoService.findBookInfos();
+        List<BookInfo> findBookInfos = bookInfoService.findAll();
 
         //then
         for (BookInfo bookInfo : findBookInfos) {
@@ -82,7 +82,7 @@ class BookInfoServiceTest {
         String bookInfoIsbn2= bookInfoService.register(bookInfo2);
 
         //when
-        BookInfo findBookInfo = bookInfoService.findBookInfoByIsbn(bookInfo1);
+        BookInfo findBookInfo = bookInfoService.findBookInfoByIsbn(bookInfoIsbn);
         List<BookInfo> findByCategory = bookInfoService.findBookInfoByCategory(category);
         List<BookInfo> findByName = bookInfoService.findBookInfoByName(bookInfo1);
         List<BookInfo> findByPublisher = bookInfoService.findBookInfoByPublisher(bookInfo1);
@@ -125,7 +125,7 @@ class BookInfoServiceTest {
         bookInfoService.deleteBookInfo(bookInfo2);
 
         //then
-        List<BookInfo> bookInfoList = bookInfoService.findBookInfos();
+        List<BookInfo> bookInfoList = bookInfoService.findAll();
         for (BookInfo bookInfo : bookInfoList) {
             System.out.println("bookInfo.getName() = " + bookInfo.getName());
         }

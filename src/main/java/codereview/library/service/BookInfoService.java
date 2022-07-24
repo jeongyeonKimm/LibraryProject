@@ -1,13 +1,18 @@
 package codereview.library.service;
 
+import codereview.library.controller.BookInfoForm;
 import codereview.library.domain.BookInfo;
 import codereview.library.domain.Category;
 import codereview.library.domain.Member;
 import codereview.library.repository.BookInfoRepository;
+import codereview.library.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
+import javax.persistence.TypedQuery;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -23,23 +28,23 @@ public class BookInfoService {
     @Transactional
     public String register(BookInfo bookInfo) {
 
-        validateDuplicateBookInfo(bookInfo);
         bookInfoRepository.save(bookInfo);
         return bookInfo.getIsbn();
     }
 
-    /**
-     * 전체 도서 정보 조회
-     */
-    public List<BookInfo> findBookInfos() {
+    public List<BookInfo> findAll() {
         return bookInfoRepository.findAll();
+    }
+
+    public List<BookInfo> findBookInfo(BookInfoForm bookInfoForm) {
+        return bookInfoRepository.findByString(bookInfoForm);
     }
 
     /**
      * isbn으로 도서 정보 조회
      */
-    public BookInfo findBookInfoByIsbn(BookInfo bookInfo) {
-        return bookInfoRepository.findByIsbn(bookInfo.getIsbn());
+    public BookInfo findBookInfoByIsbn(String isbn) {
+        return bookInfoRepository.findByIsbn(isbn);
     }
 
     /**
@@ -76,17 +81,5 @@ public class BookInfoService {
     @Transactional
     public void deleteBookInfo(BookInfo bookInfo) {
         bookInfoRepository.delete(bookInfo);
-    }
-
-    /**
-     * 중복 도서 정보 검증
-     */
-    private void validateDuplicateBookInfo(BookInfo bookInfo) {
-
-        List<BookInfo> findBookInfos = bookInfoRepository.findByName(bookInfo.getName());
-        if (!findBookInfos.isEmpty()) {
-            throw new IllegalStateException(("이미 존재하는 도서 정보 입니다."));
-        }
-
     }
 }

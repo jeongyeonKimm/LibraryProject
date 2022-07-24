@@ -27,6 +27,13 @@ public class CategoryService {
     }
 
     /**
+     * 아이디로 도서 분류 조회
+     */
+    public Category findOne(Long id) {
+        return categoryRepository.findOne(id);
+    }
+
+    /**
      * 전체 도서 분류 조회
      */
     public List<Category> findAllCategory() {
@@ -37,12 +44,10 @@ public class CategoryService {
      * 도서 분류 수정
      */
     @Transactional
-    public Category update(Long id, String name) {
+    public void update(Long id, String name) {
         Category findCategory = categoryRepository.findOne(id);
 
         findCategory.changeName(name);
-
-        return findCategory;
     }
 
     /**

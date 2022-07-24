@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div>
+        <div>
+            <form th:object="${bookInfoSearch}" class="form-inline">
+                <div class="form-group mb-2">
+                    <input type="text" th:field="*{isbn}" class="form-control" placeholder="isbn"/>
+                </div>
+
+                <div class="form-group mx-sm-1 mb-2">
+                    <select th:field="*{category}" class="form-control">
+                        <option value="">도서분류</option>
+                        <option th:each="category : ${categoryList}"
+                                th:value="${category.id}"
+                                th:text="${category.name}" />
+                    </select>
+                </div>
+
+                <div class="form-group mb-2">
+                    <input type="text" th:field="*{author}" class="form-control" placeholder="저자"/>
+                </div>
+
+                <div class="form-group mb-2">
+                    <input type="text" th:field="*{name}" class="form-control" placeholder="도서명"/>
+                </div>
+
+                <div class="form-group mb-2">
+                    <input type="text" th:field="*{publisher}" class="form-control" placeholder="출판사"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-2">검색</button>
+            </form>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>isbn</th>
+                <th>도서분류명</th>
+                <th>저자</th>
+                <th>도서명</th>
+                <th>출판사</th>
+                <th>등록일자</th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="bookInfo : ${bookInfoList}">
+                <td th:text="${bookInfo.isbn}"></td>
+                <td th:text="${bookInfo.category?.name}"></td>
+                <td th:text="${bookInfo.author}"></td>
+                <td th:text="${bookInfo.name}"></td>
+                <td th:text="${bookInfo.publisher}"></td>
+                <td th:text="${bookInfo.createdDate}"></td>
+                <td>
+                    <a href="#" th:href="@{/bookinfo/{id}/delete (id=${bookInfo.isbn})}" class="btn btn-danger" role="button">삭제</a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+
+</div> <!-- /container -->
+
+</body>
+</html>

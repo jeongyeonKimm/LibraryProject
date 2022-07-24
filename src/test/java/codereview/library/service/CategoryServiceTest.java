@@ -63,10 +63,7 @@ class CategoryServiceTest {
 
 
         //when
-        Category updatedCategory = categoryService.update(categoryId, "dictionary");
-
-        //then
-        assertEquals(updatedCategory, categoryRepository.findOne(categoryId));
+       categoryService.update(categoryId, "dictionary");
     }
 
     @Test

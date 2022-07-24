@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+    <form role="form" action="/loan/new" th:object="${loanForm}" method="post">
+
+        <div class="form-group">
+            <label for="member">회원</label>
+            <select name="memberId" id="member" class="form-control">
+                <option value="">회원 선택</option>
+                <option th:each="member : ${memberList}"
+                        th:value="${member.id}"
+                        th:text="${member.name}" />
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="book">도서</label>
+            <select name="bookId" id="book" class="form-control">
+                <option value="">도서 선택</option>
+                <option th:each="book : ${bookList}"
+                        th:value="${book.id}"
+                        th:text="${book.bookInfo?.isbn}" />
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br/>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+
+</body>
+</html>

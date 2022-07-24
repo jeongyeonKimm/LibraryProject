@@ -10,9 +10,18 @@
       <thead>
       <tr>
         <th>#</th>
-        <th>이름</th> <th>생년월일</th> <th>전화번호</th> <th>이메일</th> <th>우편번호</th> <th>메인주소</th> <th>상세주소</th>
+        <th>이름</th>
+        <th>생년월일</th>
+        <th>전화번호</th>
+        <th>이메일</th>
+        <th>우편번호</th>
+        <th>메인주소</th>
+        <th>상세주소</th>
+        <th></th>
+        <th></th>
       </tr>
       </thead>
+
       <tbody>
       <tr th:each="member : ${members}">
         <td th:text="${member.id}"></td>
@@ -31,6 +40,7 @@
         </td>
       </tr>
       </tbody>
+
     </table>
   </div>
 

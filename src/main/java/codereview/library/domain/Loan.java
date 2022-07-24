@@ -42,6 +42,9 @@ public class Loan {
     }
 
     public void changeToLoan() {
+        if (this.getBook().getBookStatus() == BookStatus.RESERVATION) {
+            throw new IllegalStateException("예약된 도서입니다.");
+        }
         this.loanStatus = LoanStatus.LOAN;
     }
 

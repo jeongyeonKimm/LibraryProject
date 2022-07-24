@@ -40,4 +40,5 @@ public class BookInfo {
         this.publisher = publisher;
         this.createdDate = createdDate;
     }
+
 }

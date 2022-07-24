@@ -17,32 +17,38 @@
             <a class="btn btn-lg btn-secondary" href="/members/new">회원 가입</a>
             <a class="btn btn-lg btn-secondary" href="/members">회원 목록</a>
         </p>
+
+        <p class="lead">도서 분류 기능</p>
+        <p>
+            <a class="btn btn-lg btn-info" href="/category/new">도서 분류 등록</a>
+            <a class="btn btn-lg btn-info" href="/category">도서 분류 조회</a>
+        </p>
+
         <p class="lead">도서 정보 기능</p>
         <p>
             <a class="btn btn-lg btn-dark" href="/bookinfo/new">도서 정보 등록</a>
             <a class="btn btn-lg btn-dark" href="/bookinfo">도서 정보 조회</a>
         </p>
+
+        <p class="lead">도서 기능</p>
+        <p>
+            <a class="btn btn-lg btn-secondary" href="/book/new">도서 등록</a>
+            <a class="btn btn-lg btn-secondary" href="/book">도서 조회</a>
+        </p>
+
         <p class="lead">도서 예약 기능</p>
         <p>
             <a class="btn btn-lg btn-info" href="/reservation/new">예약 등록</a>
             <a class="btn btn-lg btn-info" href="/reservation">예약 조회</a>
 
         </p>
+
         <p class="lead">도서 대출 기능</p>
         <p>
-            <a class="btn btn-lg btn-secondary" href="/loan/new">도서 대출</a>
-            <a class="btn btn-lg btn-secondary" href="/loan/{loanId}/return">도서 반납</a>
+            <a class="btn btn-lg btn-dark" href="/loan/new">도서 대출</a>
+            <a class="btn btn-lg btn-dark" href="/loan/{loanId}/return">도서 반납</a>
         </p>
-        <p class="lead">도서 분류 기능</p>
-        <p>
-            <a class="btn btn-lg btn-dark" href="/category/new">도서 분류 등록</a>
-            <a class="btn btn-lg btn-dark" href="/category">도서 분류 조회</a>
-        </p>
-        <p class="lead">도서 기능</p>
-        <p>
-            <a class="btn btn-lg btn-info" href="/book/new">도서 등록</a>
-            <a class="btn btn-lg btn-info" href="/book">도서 조회</a>
-        </p>
+
     </div>
 
     <div th:replace="fragments/footer :: footer" />

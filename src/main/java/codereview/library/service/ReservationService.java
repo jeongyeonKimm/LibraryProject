@@ -47,4 +47,8 @@ public class ReservationService {
     public void deleteReserv(Reservation reservation) {
         reservationRepository.delete(reservation);
     }
+
+    public Reservation findOne(Long reservationId) {
+        return reservationRepository.findOne(reservationId);
+    }
 }

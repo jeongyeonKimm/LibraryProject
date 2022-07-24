@@ -1,6 +1,7 @@
 package codereview.library.service;
 
 import codereview.library.domain.Loan;
+import codereview.library.domain.Member;
 import codereview.library.repository.LoanRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

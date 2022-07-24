@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div>
+        <div>
+            <form th:object="${memberSearch}" class="form-inline">
+
+                <div class="form-group mx-sm-1 mb-2">
+                    <select th:field="*{phone}" class="form-control">
+                        <option value="">전화번호</option>
+                        <option th:each="member : ${members}"
+                                th:value="${member.id}"
+                                th:text="${member.phone}" />
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-2">검색</button>
+            </form>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>회원#</th>
+                <th>도서#</th>
+                <th>예약일자</th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="reservation : ${reservations}">
+                <td th:text="${reservation.id}"></td>
+                <td th:text="${reservation.member?.id}"></td>
+                <td th:text="${reservation.book?.id}"></td>
+                <td th:text="${reservation.reservationDate}"></td>
+                <td>
+                    <a href="#" th:href="@{/reservation/{id}/delete (id=${reservation.id})}" class="btn btn-danger" role="button">삭제</a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+
+</div> <!-- /container -->
+
+</body>
+</html>
