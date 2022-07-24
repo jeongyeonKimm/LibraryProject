@@ -82,7 +82,7 @@ class LoanServiceTest {
         Long loanId = loanService.borrowBook(loan);
         
         //when
-        loanService.returnBook(loan);
+        loanService.returnBook(loanId);
 
         //then
         System.out.println("loan.getLoanStatus() = " + loan.getLoanStatus());

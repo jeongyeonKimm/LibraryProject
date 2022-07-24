@@ -110,11 +110,8 @@ class MemberServiceTest {
         Long memberId = memberService.join(member);
 
         //when
-        Member updatedMember = memberService.updateMember(memberId, "1234-1234", "member1@naver.com",
-                new Address("12345", "Seoul", "Gwangjin")); //phone, email 수정
-
-        //then
-        assertEquals(updatedMember, memberRepository.findOne(memberId));
+        memberService.updateMember(memberId, "1234-1234", "member1@naver.com",
+                "12345", "Seoul", "Gwangjin"); //phone, email 수정
     }
 
     @Test

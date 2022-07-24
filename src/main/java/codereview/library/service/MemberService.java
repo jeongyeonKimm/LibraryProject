@@ -19,11 +19,19 @@ public class MemberService {
     /**
      * 회원 가입
      */
+    @Transactional
     public Long join(Member member) {
 
         validateDuplicateMember(member);    //중복 회원 검증
         memberRepository.save(member);
         return member.getId();
+    }
+
+    /**
+     * 아이디로 회원 조회
+     */
+    public Member findOne(Long memberId) {
+        return memberRepository.findOne(memberId);
     }
 
     /**
@@ -43,19 +51,20 @@ public class MemberService {
     /**
      * 회원 수정
      */
-    public Member updateMember(Long id, String phone, String email, Address address) {
+    @Transactional
+    public void updateMember(Long id, String phone, String email, String zipcode, String main_address, String sub_address) {
         Member findMember = memberRepository.findOne(id);
 
         findMember.changePhone(phone);
         findMember.changeEmail(email);
-        findMember.changeAddress(address);
+        findMember.changeAddress(zipcode, main_address, sub_address);
 
-        return findMember;
     }
 
     /**
      * 회원 삭제
      */
+    @Transactional
     public void deleteMember(Member member) {
         memberRepository.delete(member);
     }

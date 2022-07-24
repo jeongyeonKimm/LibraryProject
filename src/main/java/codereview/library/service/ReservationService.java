@@ -19,6 +19,7 @@ public class ReservationService {
     /**
      * 예약 등록
      */
+    @Transactional
     public Long reserve(Reservation reservation) {
 
         reservationRepository.save(reservation);
@@ -42,6 +43,7 @@ public class ReservationService {
     /**
      * 예약 삭제
      */
+    @Transactional
     public void deleteReserv(Reservation reservation) {
         reservationRepository.delete(reservation);
     }

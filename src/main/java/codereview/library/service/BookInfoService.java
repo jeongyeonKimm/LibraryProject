@@ -20,6 +20,7 @@ public class BookInfoService {
     /**
      * 도서 정보 등록
      */
+    @Transactional
     public String register(BookInfo bookInfo) {
 
         validateDuplicateBookInfo(bookInfo);
@@ -72,6 +73,7 @@ public class BookInfoService {
     /**
      * 도서 정보 삭제
      */
+    @Transactional
     public void deleteBookInfo(BookInfo bookInfo) {
         bookInfoRepository.delete(bookInfo);
     }

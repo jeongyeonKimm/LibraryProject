@@ -16,6 +16,7 @@ public class LoanService {
     /**
      * 도서 대출
      */
+    @Transactional
     public Long borrowBook(Loan loan) {
         loanRepository.borrow(loan);
         return loan.getId();
@@ -24,8 +25,12 @@ public class LoanService {
     /**
      * 도서 반납
      */
-    public void returnBook(Loan loan) {
-        loanRepository.returnBook(loan);
+    @Transactional
+    public void returnBook(Long id) {
+
+        Loan findLoan = loanRepository.findOne(id);
+
+        findLoan.changeToReturn();
     }
 
 }

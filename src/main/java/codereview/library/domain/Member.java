@@ -28,6 +28,9 @@ public class Member {
     @Embedded
     private Address address;
 
+    protected Member() {
+    }
+
     public Member(String name, String birth, String phone, String email, Address address) {
         this.name = name;
         this.birth = birth;
@@ -44,8 +47,8 @@ public class Member {
         this.email = email;
     }
 
-    public void changeAddress(Address address) {
-        this.address = address;
+    public void changeAddress(String zipcode, String main_address, String sub_address) {
+        address.changeAddress(zipcode, main_address, sub_address);
     }
 
 }

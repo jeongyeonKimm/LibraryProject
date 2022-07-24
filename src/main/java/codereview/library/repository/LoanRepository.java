@@ -19,10 +19,6 @@ public class LoanRepository {
         em.persist(loan);
     }
 
-    public void returnBook(Loan loan) {
-        loan.changeToReturn();
-    }
-
     public Loan findOne(Long id) {
         return em.find(Loan.class, id);
     }

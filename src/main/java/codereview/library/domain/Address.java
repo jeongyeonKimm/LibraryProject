@@ -27,4 +27,9 @@ public class Address {
         this.sub_address = sub_address;
     }
 
+    public void changeAddress(String zipcode, String main_address, String sub_address) {
+        this.zipcode = zipcode;
+        this.main_address = main_address;
+        this.sub_address = sub_address;
+    }
 }

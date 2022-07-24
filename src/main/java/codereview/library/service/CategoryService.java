@@ -19,6 +19,7 @@ public class CategoryService {
     /**
      * 도서 분류 등록
      */
+    @Transactional
     public Long register(Category category) {
         validateDuplicateCategory(category);
         categoryRepository.save(category);
@@ -35,6 +36,7 @@ public class CategoryService {
     /**
      * 도서 분류 수정
      */
+    @Transactional
     public Category update(Long id, String name) {
         Category findCategory = categoryRepository.findOne(id);
 
@@ -46,6 +48,7 @@ public class CategoryService {
     /**
      * 도서 분류 삭제
      */
+    @Transactional
     public void deleteCategory(Category category) {
         categoryRepository.delete(category);
     }

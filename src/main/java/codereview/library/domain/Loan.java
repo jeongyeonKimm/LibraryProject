@@ -46,6 +46,9 @@ public class Loan {
     }
 
     public void changeToReturn() {
+        if (this.getLoanStatus() == LoanStatus.RETURN) {
+            throw new IllegalStateException("이미 반납되었습니다.");
+        }
         this.loanStatus = LoanStatus.RETURN;
     }
 }

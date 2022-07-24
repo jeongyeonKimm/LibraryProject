@@ -19,6 +19,7 @@ public class BookService {
     /**
      * 도서 등록
      */
+    @Transactional
     public Long register(Book book) {
 
         bookRepository.save(book);
@@ -49,6 +50,7 @@ public class BookService {
     /**
      * 도서 삭제
      */
+    @Transactional
     public void deleteBook(Book book) {
         bookRepository.delete(book);
     }
